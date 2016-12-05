@@ -103,6 +103,7 @@ $(document).ready(function(){
     });
     promise.then(function(){
       console.log('SignIn User');
+      $password.val("");
     });
   });
 
@@ -120,7 +121,7 @@ $(document).ready(function(){
     promise.then(function(user){
       console.log("SignUp user is "+user.email);
       const dbUserid = dbUser.child(user.uid);
-      dbUserid.push({email:user.email});
+      dbUserid.child("data").push({email:user.email});
       $password.val("");
     });
   });
